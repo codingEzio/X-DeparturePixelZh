@@ -31,7 +31,7 @@ swift scripts/check_native.swift Build
 
 For an identity-only migration, `scripts/check_compatibility.py` compares coverage, every encoded glyph outline, and every advance width between a prior candidate and a rebuilt candidate. It accepts two explicit file paths so it does not encode a private predecessor or machine path.
 
-This release pins the builder revision `b60103967e0a6722f57985aab4727c15ed2f7aec` in both `recipe.json` and `builder-version`. Release checks require that exact clean builder checkout. For local builder development only, pass `--development`; that bypasses the pin and cannot produce a release candidate.
+This release pins the builder revision `ab5195d4153d7659a29d30bd611ca1f36fc26b2a` in both `recipe.json` and `builder-version`. Release checks require that exact clean builder checkout. For local builder development only, pass `--development`; that bypasses the pin and cannot produce a release candidate.
 
 The `consumer-fixture/` manifest demonstrates guarded adoption. It synchronizes selected binaries, notices, and public provenance together, keeps a receipt, detects drift, and never follows an unreviewed newer font.
 

@@ -4,7 +4,7 @@
   "receipt": ".departurepixelzh-sync.json",
   "font": {
     "version": "0.1.0",
-    "recipe_sha256": "c2187767bb62288a4c0ff05a8f3ec69d2616969c0bb14f177ec47004078daced",
+    "recipe_sha256": "d69b00cec5614eb55be3c48a50014460def26424e59a26369d3b0a453f039828",
     "families": [
       {"postscript_name": "DeparturePixelZh", "sha256": "54ce94332b3736eac78de6819e8b7dc0139a48b0f439c49aa065347c46822af6"},
       {"postscript_name": "DeparturePixelZhCompact", "sha256": "74adf4919c690e61aa7bdd4c369a6f5c84029413a7da5e85d687ea7fa6b502e7"}

@@ -81,5 +81,5 @@
   },
   "documents": ["README.md", "NOTICE.md", "OFL.txt", "specimens/index.html", "specimens/outline-and-advance.svg"],
   "license_directory": "licenses",
-  "builder": {"repository": "DeparturePixelZhBuilder", "revision": "b60103967e0a6722f57985aab4727c15ed2f7aec"}
+  "builder": {"repository": "DeparturePixelZhBuilder", "revision": "ab5195d4153d7659a29d30bd611ca1f36fc26b2a"}
 }
