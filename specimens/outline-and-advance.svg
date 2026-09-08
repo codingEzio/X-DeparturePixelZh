@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Outline bounds and advance widths</title>
+  <desc id="desc">A one-cell Latin glyph and a two-cell Chinese glyph share a baseline but use different advance widths.</desc>
+  <rect width="1200" height="420" fill="#f5f2ea"/>
+  <g font-family="ui-monospace, monospace" fill="#1d2430">
+    <text x="70" y="70" font-size="28">A glyph drawing and its advance are different things.</text>
+    <text x="70" y="105" font-size="18" fill="#59616c">Standard: 700 / 1,400 units. Compact: 650 / 1,300 units.</text>
+  </g>
+  <g transform="translate(70 155)">
+    <path d="M0 190H1080" stroke="#1d2430" stroke-width="3"/>
+    <rect x="30" y="30" width="240" height="160" fill="#d4ecdf" stroke="#2e7d5a" stroke-width="3"/>
+    <path d="M105 170L150 50L195 170M121 128H179" fill="none" stroke="#172b20" stroke-width="20" stroke-linejoin="round"/>
+    <path d="M0 215H300M0 205V225M300 205V225" stroke="#1d2430" stroke-width="3"/>
+    <text x="42" y="258" font-family="ui-monospace, monospace" font-size="20" fill="#1d2430">one-cell advance</text>
+    <rect x="480" y="30" width="540" height="160" fill="#d6e2f3" stroke="#386aa2" stroke-width="3"/>
+    <path d="M635 57V165M820 57V165M555 90H900M555 132H900" fill="none" stroke="#1f3555" stroke-width="20" stroke-linecap="square"/>
+    <path d="M450 215H1050M450 205V225M1050 205V225" stroke="#1d2430" stroke-width="3"/>
+    <text x="650" y="258" font-family="ui-monospace, monospace" font-size="20" fill="#1d2430">two-cell advance</text>
+  </g>
+</svg>
