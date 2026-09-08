@@ -1,46 +1,46 @@
 # DeparturePixelZh
 
-DeparturePixelZh is a pixel-inspired, monospaced Chinese/Latin font family assembled from [Departure Mono](https://github.com/rektdeckard/departure-mono), [Cubic 11](https://github.com/ACh-K/Cubic-11), and Nerd Fonts Symbols Mono. It is a self-contained text-and-icon font; emoji remain a system fallback.
+[English](README.md) · [简体中文](README.zh-Hans.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
-| Family | PostScript name | Latin / full-width advance |
+English and Chinese pixel glyphs in one monospaced font. Latin characters use one cell; full-width Chinese characters use two. Developer icons are included. Color emoji use the system font.
+
+The family combines [Departure Mono](https://github.com/rektdeckard/departure-mono), [Cubic 11](https://github.com/ACh-K/Cubic-11), and Nerd Fonts Symbols Mono.
+
+## Choose a font
+
+| Family | PostScript name | Spacing |
 | --- | --- | --- |
-| DeparturePixelZh | `DeparturePixelZh-Regular` | 700 / 1,400 units |
-| DeparturePixelZh Compact | `DeparturePixelZhCompact-Regular` | 650 / 1,300 units |
+| DeparturePixelZh | `DeparturePixelZh-Regular` | Standard |
+| DeparturePixelZh Compact | `DeparturePixelZhCompact-Regular` | About 7.14% tighter |
 
-Compact is 7.14% tighter. It is a separate font with fitted outlines and adjusted mark positioning, not an application letter-spacing setting. Both faces are Regular (400), upright, and use the same 1,100-unit em and 1,700-unit line box.
+Both are Regular, upright fonts with the same line height. Compact has fitted glyphs and its own spacing; no application letter-spacing adjustment is needed.
 
-## Install
+## Use
 
-Release archives contain TTF files, WOFF2 files, `OFL.txt`, `NOTICE.md`, component notices, checksums, and public provenance. Install the TTF matching the desired family. Applications that redistribute a font must include the same notice material.
+Install the TTF for desktop use. Use WOFF2 on the web. Packages include fonts, checksums, source records, and license notices. Keep `OFL.txt`, `NOTICE.md`, and `licenses/` when redistributing or bundling the fonts.
 
-Use the exact PostScript name when an Apple application registers the bundled file. Web applications should use the WOFF2 asset without a `local()` source and should keep a normal system fallback for first paint.
+Apple applications that register a bundled font should use its exact PostScript name. For web use, load the WOFF2 file without a `local()` source and keep a system fallback.
 
 ## Rebuild
 
-The recipe pins each upstream input by URL and SHA-256. A build never reads an installed font as a source.
+Requires [uv](https://docs.astral.sh/uv/) and a sibling DeparturePixelZhBuilder checkout. Use the builder revision recorded in [builder-version](builder-version); release checks require that exact clean checkout.
 
 ```sh
 cd ../DeparturePixelZhBuilder
-uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json \
-  --output ../DeparturePixelZh/Build
-uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json \
-  --output ../DeparturePixelZh/Build
-cd ../DeparturePixelZh
-swift scripts/check_native.swift Build
+uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
+uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
 ```
 
-For an identity-only migration, `scripts/check_compatibility.py` compares coverage, every encoded glyph outline, and every advance width between a prior candidate and a rebuilt candidate. It accepts two explicit file paths so it does not encode a private predecessor or machine path.
+On macOS, run `swift scripts/check_native.swift Build` from this repository for native font checks. Use `--development` only for local builder development; it bypasses the revision pin and cannot produce a release candidate.
 
-This release pins the builder revision `ab5195d4153d7659a29d30bd611ca1f36fc26b2a` in both `recipe.json` and `builder-version`. Release checks require that exact clean builder checkout. For local builder development only, pass `--development`; that bypasses the pin and cannot produce a release candidate.
-
-The `consumer-fixture/` manifest demonstrates guarded adoption. It synchronizes selected binaries, notices, and public provenance together, keeps a receipt, detects drift, and never follows an unreviewed newer font.
+[recipe.json](recipe.json) pins source URLs and SHA-256 hashes. Builds do not use installed fonts as input. [consumer-fixture/](consumer-fixture/) shows how to copy verified fonts, notices, and source records into a consumer project.
 
 ## Coverage and limits
 
-Departure Mono supplies overlapping Latin text; Cubic 11 supplies remaining Chinese coverage; Nerd Fonts Symbols Mono supplies private-use developer icons. Each generated `*_coverage.json` records the provider for every included code point. The builder normalizes coordinates, preserves one-cell/two-cell advances, fits Cubic 11 outlines at 95% optical scale, and verifies combining marks and box drawing.
+Departure Mono has priority for overlapping text characters; Cubic 11 fills remaining Chinese coverage. Nerd Fonts Symbols Mono supplies private-use icons. Generated coverage files identify the source of each included code point.
 
-Unsupported scripts and color emoji use platform fallback. The output does not claim bold, italic, variable-font, mobile, or cross-platform rendering support beyond the checked release artifacts.
+Only Regular upright faces are provided. Unsupported characters and color emoji need fallback fonts. Appearance depends on font size, display scaling, and the application; the project does not claim verified rendering on every platform.
 
-## License and attribution
+## License
 
-The font files are distributed under the [SIL Open Font License 1.1](OFL.txt). See [NOTICE.md](NOTICE.md) and [licenses/](licenses/) for source attribution, reserved names, modifications, and component notices. DeparturePixelZh is an independent derived name; `Cubic`, `俐方體`, `Pomicons`, and `Font Awesome` remain source-attribution names and are not presented as derived-family names.
+Fonts use the [SIL Open Font License 1.1](OFL.txt). See [NOTICE.md](NOTICE.md) and [licenses/](licenses/) for attribution, modifications, reserved names, and component terms. DeparturePixelZh is an independent derived name. Source authors and trademark owners do not endorse it.
