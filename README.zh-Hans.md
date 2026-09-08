@@ -4,6 +4,10 @@
 
 一款等宽字体，同时装下英文像素字和中文像素字。英文占一格，中文全角字占两格，也包含开发者图标。彩色 emoji 使用系统字体。
 
+[下载 DeparturePixelZh 0.1.0（ZIP）](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [所有版本](https://github.com/codingEzio/DeparturePixelZh/releases)
+
+![DeparturePixelZh：一款字体，中英像素等宽](assets/departurepixelzh-social-card.png)
+
 字体组合自 [Departure Mono](https://github.com/rektdeckard/departure-mono)、[Cubic 11](https://github.com/ACh-K/Cubic-11) 和 Nerd Fonts Symbols Mono。
 
 ## 选择版本
@@ -33,13 +37,21 @@ uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json -
 
 macOS 可在本仓库运行 `swift scripts/check_native.swift Build`，检查原生字体表现。`--development` 仅用于本地构建器开发；它跳过版本锁定，不能生成发布候选。
 
-[recipe.json](recipe.json) 固定来源 URL 和 SHA-256，不从已安装字体取材。[consumer-fixture/](consumer-fixture/) 演示如何把验证过的字体、许可和来源记录一并复制到使用方项目。
+[recipe.json](recipe.json) 固定来源 URL 和 SHA-256。构建器从这些 URL 下载输入文件，或复用缓存，并按固定的 SHA-256 校验；不会读取 macOS 已安装字体作为构建输入。[consumer-fixture/](consumer-fixture/) 演示如何把验证过的字体、许可和来源记录一并复制到使用方项目。
 
 ## 覆盖与限制
 
 重复的文字字符优先采用 Departure Mono，Cubic 11 补充其余中文覆盖，Nerd Fonts Symbols Mono 提供私用区图标。生成的覆盖文件记录每个收录码位的来源。
 
 目前只提供 Regular 正体。未收录字符和彩色 emoji 需要备用字体。效果取决于字号、屏幕缩放和应用，项目不声称已验证所有平台。
+
+## 可选：对比原版字体
+
+在装有 Homebrew 的 macOS 上，可以安装原版字体做视觉对比。这不是构建前提，安装或使用 DeparturePixelZh 也不需要这一步。
+
+```sh
+brew install --cask font-departure-mono font-cubic-11
+```
 
 ## 许可
 

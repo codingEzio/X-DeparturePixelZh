@@ -4,6 +4,10 @@
 
 English and Chinese pixel glyphs in one monospaced font. Latin characters use one cell; full-width Chinese characters use two. Developer icons are included. Color emoji use the system font.
 
+[Download DeparturePixelZh 0.1.0 (ZIP)](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [All releases](https://github.com/codingEzio/DeparturePixelZh/releases)
+
+![DeparturePixelZh — English and Chinese pixel glyphs in one monospaced font](assets/departurepixelzh-social-card.png)
+
 The family combines [Departure Mono](https://github.com/rektdeckard/departure-mono), [Cubic 11](https://github.com/ACh-K/Cubic-11), and Nerd Fonts Symbols Mono.
 
 ## Choose a font
@@ -33,13 +37,21 @@ uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json -
 
 On macOS, run `swift scripts/check_native.swift Build` from this repository for native font checks. Use `--development` only for local builder development; it bypasses the revision pin and cannot produce a release candidate.
 
-[recipe.json](recipe.json) pins source URLs and SHA-256 hashes. Builds do not use installed fonts as input. [consumer-fixture/](consumer-fixture/) shows how to copy verified fonts, notices, and source records into a consumer project.
+[recipe.json](recipe.json) pins source URLs and SHA-256 hashes. The builder downloads those inputs or reuses cached copies, validating them against the pinned hashes. It never reads installed macOS fonts as build inputs. [consumer-fixture/](consumer-fixture/) shows how to copy verified fonts, notices, and source records into a consumer project.
 
 ## Coverage and limits
 
 Departure Mono has priority for overlapping text characters; Cubic 11 fills remaining Chinese coverage. Nerd Fonts Symbols Mono supplies private-use icons. Generated coverage files identify the source of each included code point.
 
 Only Regular upright faces are provided. Unsupported characters and color emoji need fallback fonts. Appearance depends on font size, display scaling, and the application; the project does not claim verified rendering on every platform.
+
+## Optional: compare the upstream fonts
+
+On macOS with Homebrew, you can install the original fonts for visual comparison. This is not a build prerequisite and is not needed to install or use DeparturePixelZh.
+
+```sh
+brew install --cask font-departure-mono font-cubic-11
+```
 
 ## License
 

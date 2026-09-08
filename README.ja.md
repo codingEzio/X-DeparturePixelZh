@@ -4,6 +4,10 @@
 
 英字と中国語のピクセル字形を、一つの等幅フォントにまとめました。英字は1セル、中国語の全角文字は2セルを使います。開発者向けアイコンも含みます。カラー絵文字はシステムフォントで表示します。
 
+[DeparturePixelZh 0.1.0をダウンロード（ZIP）](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [すべてのリリース](https://github.com/codingEzio/DeparturePixelZh/releases)
+
+![DeparturePixelZh — 英字と中国語のピクセル字形を一つの等幅フォントに](assets/departurepixelzh-social-card.png)
+
 [Departure Mono](https://github.com/rektdeckard/departure-mono)、[Cubic 11](https://github.com/ACh-K/Cubic-11)、Nerd Fonts Symbols Monoを組み合わせたフォントです。
 
 ## フォントを選ぶ
@@ -33,13 +37,21 @@ uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json -
 
 macOSでは、このリポジトリから`swift scripts/check_native.swift Build`を実行してネイティブ描画を検証できます。`--development`はビルダーのローカル開発専用です。リビジョンの固定を省略するため、リリース候補は生成できません。
 
-[recipe.json](recipe.json)は出典URLとSHA-256を固定します。インストール済みフォントは入力に使いません。[consumer-fixture/](consumer-fixture/)は、検証済みフォント、ライセンス文書、出典記録を利用側プロジェクトへまとめてコピーする例です。
+[recipe.json](recipe.json)は出典URLとSHA-256を固定します。ビルダーはそのURLから入力をダウンロードするか、キャッシュを再利用し、固定されたSHA-256で検証します。macOSにインストール済みのフォントをビルド入力として読み込むことはありません。[consumer-fixture/](consumer-fixture/)は、検証済みフォント、ライセンス文書、出典記録を利用側プロジェクトへまとめてコピーする例です。
 
 ## 収録範囲と制限
 
 重複する文字はDeparture Monoを優先し、Cubic 11が残りの中国語文字を補います。Nerd Fonts Symbols Monoが私用領域のアイコンを提供します。生成された収録範囲ファイルで、各コードポイントの出典を確認できます。
 
 Regularの正体のみです。未収録文字とカラー絵文字には代替フォントが必要です。見え方は文字サイズ、画面の拡大率、アプリに依存します。すべてのプラットフォームでの描画を検証したわけではありません。
+
+## 任意：元のフォントと比較する
+
+Homebrewを導入したmacOSでは、元のフォントをインストールして見た目を比較できます。これはビルドの前提条件ではなく、DeparturePixelZhのインストールや利用にも不要です。
+
+```sh
+brew install --cask font-departure-mono font-cubic-11
+```
 
 ## ライセンス
 

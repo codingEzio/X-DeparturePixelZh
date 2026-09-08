@@ -4,6 +4,10 @@
 
 영문과 중국어 픽셀 글자를 하나의 고정폭 글꼴에 담았습니다. 영문은 한 칸, 중국어 전각 글자는 두 칸을 차지합니다. 개발자 아이콘도 포함합니다. 컬러 이모지는 시스템 글꼴을 사용합니다.
 
+[DeparturePixelZh 0.1.0 다운로드 (ZIP)](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [모든 릴리스](https://github.com/codingEzio/DeparturePixelZh/releases)
+
+![DeparturePixelZh — 영문과 중국어 픽셀 글자를 하나의 고정폭 글꼴에](assets/departurepixelzh-social-card.png)
+
 [Departure Mono](https://github.com/rektdeckard/departure-mono), [Cubic 11](https://github.com/ACh-K/Cubic-11), Nerd Fonts Symbols Mono를 조합한 글꼴입니다.
 
 ## 글꼴 선택
@@ -33,13 +37,21 @@ uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json -
 
 macOS에서는 이 저장소에서 `swift scripts/check_native.swift Build`를 실행해 네이티브 글꼴을 검사할 수 있습니다. `--development`는 로컬 빌더 개발에만 사용하세요. 리비전 고정을 건너뛰므로 릴리스 후보를 만들 수 없습니다.
 
-[recipe.json](recipe.json)은 소스 URL과 SHA-256을 고정합니다. 설치된 글꼴을 입력으로 사용하지 않습니다. [consumer-fixture/](consumer-fixture/)는 검증한 글꼴, 라이선스 문서, 출처 기록을 사용 프로젝트에 함께 복사하는 예제입니다.
+[recipe.json](recipe.json)은 소스 URL과 SHA-256을 고정합니다. 빌더는 해당 URL에서 입력 파일을 다운로드하거나 캐시를 재사용하며, 고정된 SHA-256으로 검증합니다. macOS에 설치된 글꼴을 빌드 입력으로 읽지 않습니다. [consumer-fixture/](consumer-fixture/)는 검증한 글꼴, 라이선스 문서, 출처 기록을 사용 프로젝트에 함께 복사하는 예제입니다.
 
 ## 지원 범위와 한계
 
 겹치는 문자에는 Departure Mono를 우선 사용하고 Cubic 11이 나머지 중국어 문자를 보완합니다. Nerd Fonts Symbols Mono는 사용자 정의 영역의 아이콘을 제공합니다. 생성된 지원 범위 파일에서 각 코드 포인트의 출처를 확인할 수 있습니다.
 
 Regular 정체만 제공합니다. 지원하지 않는 문자와 컬러 이모지는 대체 글꼴이 필요합니다. 화면 표시는 글자 크기, 화면 배율, 앱에 따라 달라집니다. 모든 플랫폼에서 렌더링을 검증한 것은 아닙니다.
+
+## 선택 사항: 원본 글꼴과 비교
+
+Homebrew가 설치된 macOS에서는 원본 글꼴을 설치해 모양을 비교할 수 있습니다. 빌드의 필수 조건이 아니며, DeparturePixelZh를 설치하거나 사용하는 데도 필요하지 않습니다.
+
+```sh
+brew install --cask font-departure-mono font-cubic-11
+```
 
 ## 라이선스
 
