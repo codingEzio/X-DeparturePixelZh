@@ -1,0 +1,8 @@
+/Build/
+/dist/
+/Local/
+/consumer-fixture/Assets/
+/consumer-fixture/Licenses/
+/consumer-fixture/.departurepixelzh-sync.json
+/consumer-fixture/.departurepixelzh-sync.lock
+.DS_Store
