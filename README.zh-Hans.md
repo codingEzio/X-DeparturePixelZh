@@ -4,7 +4,7 @@
 
 一款等宽字体，同时装下英文像素字和中文像素字。英文占一格，中文全角字占两格，也包含开发者图标。彩色 emoji 使用系统字体。
 
-[下载 DeparturePixelZh 0.1.0（ZIP）](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [所有版本](https://github.com/codingEzio/DeparturePixelZh/releases)
+[下载 DeparturePixelZh 0.1.0（ZIP）](https://github.com/codingEzio/X-DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [所有版本](https://github.com/codingEzio/X-DeparturePixelZh/releases)
 
 ![DeparturePixelZh：一款字体，中英像素等宽](assets/departurepixelzh-social-card.png)
 
@@ -27,12 +27,12 @@ Apple 应用注册内置字体时，应使用准确的 PostScript 名称。网�
 
 ## 重新构建
 
-需要 [uv](https://docs.astral.sh/uv/) 和同级目录中的 DeparturePixelZhBuilder。构建器必须切换到 [builder-version](builder-version) 记录的版本；发布检查要求该版本的工作区没有改动。
+需要 [uv](https://docs.astral.sh/uv/) 和同级目录中的 X-DeparturePixelZhBuilder。构建器必须切换到 [builder-version](builder-version) 记录的版本；发布检查要求该版本的工作区没有改动。
 
 ```sh
-cd ../DeparturePixelZhBuilder
-uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
-uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
+cd ../X-DeparturePixelZhBuilder
+uv run departurepixelzh-builder build --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
+uv run departurepixelzh-builder check --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
 ```
 
 macOS 可在本仓库运行 `swift scripts/check_native.swift Build`，检查原生字体表现。`--development` 仅用于本地构建器开发；它跳过版本锁定，不能生成发布候选。

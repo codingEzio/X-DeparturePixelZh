@@ -4,7 +4,7 @@
 
 Letras inglesas y caracteres chinos de estilo píxel en una sola fuente monoespaciada. Los caracteres latinos ocupan una celda; los caracteres chinos de ancho completo, dos. Incluye iconos para desarrolladores. Los emoji en color usan la fuente del sistema.
 
-[Descargar DeparturePixelZh 0.1.0 (ZIP)](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [Todas las versiones](https://github.com/codingEzio/DeparturePixelZh/releases)
+[Descargar DeparturePixelZh 0.1.0 (ZIP)](https://github.com/codingEzio/X-DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [Todas las versiones](https://github.com/codingEzio/X-DeparturePixelZh/releases)
 
 ![DeparturePixelZh — letras inglesas y caracteres chinos de estilo píxel en una fuente monoespaciada](assets/departurepixelzh-social-card.png)
 
@@ -27,12 +27,12 @@ Las aplicaciones de Apple que registren una fuente incluida deben usar su nombre
 
 ## Reconstruir
 
-Necesitas [uv](https://docs.astral.sh/uv/) y DeparturePixelZhBuilder en un directorio hermano. Usa la revisión indicada en [builder-version](builder-version). La comprobación de publicación exige esa revisión exacta y un árbol de trabajo sin cambios.
+Necesitas [uv](https://docs.astral.sh/uv/) y X-DeparturePixelZhBuilder en un directorio hermano. Usa la revisión indicada en [builder-version](builder-version). La comprobación de publicación exige esa revisión exacta y un árbol de trabajo sin cambios.
 
 ```sh
-cd ../DeparturePixelZhBuilder
-uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
-uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
+cd ../X-DeparturePixelZhBuilder
+uv run departurepixelzh-builder build --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
+uv run departurepixelzh-builder check --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
 ```
 
 En macOS, ejecuta `swift scripts/check_native.swift Build` desde este repositorio para comprobar las fuentes con el sistema nativo. Usa `--development` solo para desarrollar el constructor localmente: omite la revisión fijada y no permite generar una versión candidata para publicación.

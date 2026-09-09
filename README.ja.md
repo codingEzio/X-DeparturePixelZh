@@ -4,7 +4,7 @@
 
 英字と中国語のピクセル字形を、一つの等幅フォントにまとめました。英字は1セル、中国語の全角文字は2セルを使います。開発者向けアイコンも含みます。カラー絵文字はシステムフォントで表示します。
 
-[DeparturePixelZh 0.1.0をダウンロード（ZIP）](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [すべてのリリース](https://github.com/codingEzio/DeparturePixelZh/releases)
+[DeparturePixelZh 0.1.0をダウンロード（ZIP）](https://github.com/codingEzio/X-DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [すべてのリリース](https://github.com/codingEzio/X-DeparturePixelZh/releases)
 
 ![DeparturePixelZh — 英字と中国語のピクセル字形を一つの等幅フォントに](assets/departurepixelzh-social-card.png)
 
@@ -27,12 +27,12 @@ Appleアプリで同梱フォントを登録する場合は、正確なPostScrip
 
 ## 再ビルド
 
-[uv](https://docs.astral.sh/uv/)と、同じ親ディレクトリにあるDeparturePixelZhBuilderが必要です。[builder-version](builder-version)に記録されたリビジョンを使ってください。リリース検証には、そのリビジョンの未変更の作業ツリーが必要です。
+[uv](https://docs.astral.sh/uv/)と、同じ親ディレクトリにあるX-DeparturePixelZhBuilderが必要です。[builder-version](builder-version)に記録されたリビジョンを使ってください。リリース検証には、そのリビジョンの未変更の作業ツリーが必要です。
 
 ```sh
-cd ../DeparturePixelZhBuilder
-uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
-uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
+cd ../X-DeparturePixelZhBuilder
+uv run departurepixelzh-builder build --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
+uv run departurepixelzh-builder check --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
 ```
 
 macOSでは、このリポジトリから`swift scripts/check_native.swift Build`を実行してネイティブ描画を検証できます。`--development`はビルダーのローカル開発専用です。リビジョンの固定を省略するため、リリース候補は生成できません。

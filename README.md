@@ -4,7 +4,7 @@
 
 English and Chinese pixel glyphs in one monospaced font. Latin characters use one cell; full-width Chinese characters use two. Developer icons are included. Color emoji use the system font.
 
-[Download DeparturePixelZh 0.1.0 (ZIP)](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [All releases](https://github.com/codingEzio/DeparturePixelZh/releases)
+[Download DeparturePixelZh 0.1.0 (ZIP)](https://github.com/codingEzio/X-DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [All releases](https://github.com/codingEzio/X-DeparturePixelZh/releases)
 
 ![DeparturePixelZh — English and Chinese pixel glyphs in one monospaced font](assets/departurepixelzh-social-card.png)
 
@@ -27,12 +27,12 @@ Apple applications that register a bundled font should use its exact PostScript 
 
 ## Rebuild
 
-Requires [uv](https://docs.astral.sh/uv/) and a sibling DeparturePixelZhBuilder checkout. Use the builder revision recorded in [builder-version](builder-version); release checks require that exact clean checkout.
+Requires [uv](https://docs.astral.sh/uv/) and a sibling X-DeparturePixelZhBuilder checkout. Use the builder revision recorded in [builder-version](builder-version); release checks require that exact clean checkout.
 
 ```sh
-cd ../DeparturePixelZhBuilder
-uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
-uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
+cd ../X-DeparturePixelZhBuilder
+uv run departurepixelzh-builder build --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
+uv run departurepixelzh-builder check --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
 ```
 
 On macOS, run `swift scripts/check_native.swift Build` from this repository for native font checks. Use `--development` only for local builder development; it bypasses the revision pin and cannot produce a release candidate.

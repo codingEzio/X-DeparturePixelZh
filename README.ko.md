@@ -4,7 +4,7 @@
 
 영문과 중국어 픽셀 글자를 하나의 고정폭 글꼴에 담았습니다. 영문은 한 칸, 중국어 전각 글자는 두 칸을 차지합니다. 개발자 아이콘도 포함합니다. 컬러 이모지는 시스템 글꼴을 사용합니다.
 
-[DeparturePixelZh 0.1.0 다운로드 (ZIP)](https://github.com/codingEzio/DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [모든 릴리스](https://github.com/codingEzio/DeparturePixelZh/releases)
+[DeparturePixelZh 0.1.0 다운로드 (ZIP)](https://github.com/codingEzio/X-DeparturePixelZh/releases/download/v0.1.0/DeparturePixelZh-0.1.0.zip) · [모든 릴리스](https://github.com/codingEzio/X-DeparturePixelZh/releases)
 
 ![DeparturePixelZh — 영문과 중국어 픽셀 글자를 하나의 고정폭 글꼴에](assets/departurepixelzh-social-card.png)
 
@@ -27,12 +27,12 @@ Apple 앱에서 포함된 글꼴을 등록할 때는 정확한 PostScript 이름
 
 ## 다시 빌드하기
 
-[uv](https://docs.astral.sh/uv/)와 같은 상위 디렉터리에 있는 DeparturePixelZhBuilder가 필요합니다. [builder-version](builder-version)에 기록된 리비전을 사용하세요. 릴리스 검사는 해당 리비전의 작업 트리가 수정되지 않은 상태여야 합니다.
+[uv](https://docs.astral.sh/uv/)와 같은 상위 디렉터리에 있는 X-DeparturePixelZhBuilder가 필요합니다. [builder-version](builder-version)에 기록된 리비전을 사용하세요. 릴리스 검사는 해당 리비전의 작업 트리가 수정되지 않은 상태여야 합니다.
 
 ```sh
-cd ../DeparturePixelZhBuilder
-uv run departurepixelzh-builder build --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
-uv run departurepixelzh-builder check --recipe ../DeparturePixelZh/recipe.json --output ../DeparturePixelZh/Build
+cd ../X-DeparturePixelZhBuilder
+uv run departurepixelzh-builder build --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
+uv run departurepixelzh-builder check --recipe ../X-DeparturePixelZh/recipe.json --output ../X-DeparturePixelZh/Build
 ```
 
 macOS에서는 이 저장소에서 `swift scripts/check_native.swift Build`를 실행해 네이티브 글꼴을 검사할 수 있습니다. `--development`는 로컬 빌더 개발에만 사용하세요. 리비전 고정을 건너뛰므로 릴리스 후보를 만들 수 없습니다.
