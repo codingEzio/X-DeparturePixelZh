@@ -47,64 +47,73 @@ func font(_ size: CGFloat) -> CTFont {
   CTFontCreateCopyWithAttributes(compactFace, size, nil, nil)
 }
 
-func draw(_ text: String, size: CGFloat, at point: CGPoint,
-          color: NSColor = foreground) {
+func line(_ text: String, size: CGFloat, color: NSColor = foreground) -> CTLine {
   let value = NSAttributedString(string: text, attributes: [
     kCTFontAttributeName as NSAttributedString.Key: font(size),
     kCTForegroundColorAttributeName as NSAttributedString.Key: color.cgColor,
   ])
-  context.textPosition = point
-  CTLineDraw(CTLineCreateWithAttributedString(value), context)
+  return CTLineCreateWithAttributedString(value)
 }
 
-func drawSystem(_ text: String, size: CGFloat, weight: NSFont.Weight,
-                at point: CGPoint, color: NSColor) {
+func systemLine(_ text: String, size: CGFloat, weight: NSFont.Weight,
+                color: NSColor) -> CTLine {
   let value = NSAttributedString(string: text, attributes: [
     .font: NSFont.monospacedSystemFont(ofSize: size, weight: weight),
     .foregroundColor: color,
   ])
-  context.textPosition = point
-  CTLineDraw(CTLineCreateWithAttributedString(value), context)
+  return CTLineCreateWithAttributedString(value)
 }
 
-let cell: CGFloat = 108
-let gridOrigin = CGPoint(x: 1086, y: 348)
+func drawCentered(_ line: CTLine, y: CGFloat, safe: Bool = true) {
+  let lineWidth = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
+  let x = (CGFloat(width) - lineWidth) / 2
+  if safe && (x < 220 || x + lineWidth > 1380) {
+    fputs("centered line exceeds the social-card safe area\n", stderr)
+    exit(1)
+  }
+  context.textPosition = CGPoint(x: x, y: y)
+  CTLineDraw(line, context)
+}
+
+// The four-cell example stays in the center-safe area used by blog and social crops.
+let cell: CGFloat = 102
+let gridOrigin = CGPoint(x: 596, y: 70)
 for column in 0...4 {
   let x = gridOrigin.x + CGFloat(column) * cell
   context.setStrokeColor(grid.cgColor)
   context.setLineWidth(column == 0 || column == 4 ? 2 : 1)
   context.move(to: CGPoint(x: x, y: gridOrigin.y))
-  context.addLine(to: CGPoint(x: x, y: gridOrigin.y + 2 * cell))
+  context.addLine(to: CGPoint(x: x, y: gridOrigin.y + cell))
   context.strokePath()
 }
-for row in 0...2 {
+for row in 0...1 {
   let y = gridOrigin.y + CGFloat(row) * cell
   context.setStrokeColor(grid.cgColor)
-  context.setLineWidth(row == 0 || row == 2 ? 2 : 1)
+  context.setLineWidth(row == 0 || row == 1 ? 2 : 1)
   context.move(to: CGPoint(x: gridOrigin.x, y: y))
   context.addLine(to: CGPoint(x: gridOrigin.x + 4 * cell, y: y))
   context.strokePath()
 }
 
-drawSystem("PROJECT · PIXEL MONO", size: 24, weight: .semibold,
-  at: CGPoint(x: 96, y: 782), color: muted)
-draw("DeparturePixelZh", size: 80, at: CGPoint(x: 91, y: 655))
-draw("Compact", size: 126, at: CGPoint(x: 86, y: 495), color: accent)
-draw("Hello，像素。", size: 62, at: CGPoint(x: 94, y: 352))
-drawSystem("English 1 cell · 中文 2 cells", size: 30, weight: .medium,
-  at: CGPoint(x: 98, y: 248), color: foreground)
-drawSystem("650 / 1300 units · 7.14% tighter", size: 24, weight: .regular,
-  at: CGPoint(x: 98, y: 181), color: muted)
+drawCentered(systemLine("PROJECT · PIXEL MONO", size: 22, weight: .semibold, color: muted), y: 790)
+drawCentered(line("DeparturePixelZh", size: 82), y: 650)
+drawCentered(line("Compact", size: 136, color: accent), y: 475)
+drawCentered(line("Hello，像素。", size: 64), y: 340)
+drawCentered(systemLine("ENGLISH 1 CELL · 中文 2 CELLS", size: 28, weight: .medium, color: foreground), y: 248)
 
-draw("A", size: 72, at: CGPoint(x: gridOrigin.x + 31, y: gridOrigin.y + 38))
-draw("B", size: 72, at: CGPoint(x: gridOrigin.x + cell + 31, y: gridOrigin.y + 38))
-draw("中", size: 72, at: CGPoint(x: gridOrigin.x + 2 * cell + 40, y: gridOrigin.y + 38))
-drawSystem("1", size: 20, weight: .medium,
-  at: CGPoint(x: gridOrigin.x + 47, y: gridOrigin.y - 42), color: muted)
-drawSystem("1", size: 20, weight: .medium,
-  at: CGPoint(x: gridOrigin.x + cell + 47, y: gridOrigin.y - 42), color: muted)
-drawSystem("2 cells", size: 20, weight: .medium,
-  at: CGPoint(x: gridOrigin.x + 2 * cell + 63, y: gridOrigin.y - 42), color: muted)
+func drawInCell(_ text: String, column: Int, columns: Int = 1) {
+  let glyph = line(text, size: 66)
+  let glyphWidth = CGFloat(CTLineGetTypographicBounds(glyph, nil, nil, nil))
+  let span = CGFloat(columns) * cell
+  context.textPosition = CGPoint(
+    x: gridOrigin.x + CGFloat(column) * cell + (span - glyphWidth) / 2,
+    y: gridOrigin.y + 22)
+  CTLineDraw(glyph, context)
+}
+
+drawInCell("A", column: 0)
+drawInCell("B", column: 1)
+drawInCell("中", column: 2, columns: 2)
 
 guard let image = context.makeImage(),
       let png = NSBitmapImageRep(cgImage: image).representation(using: .png, properties: [:]) else {
